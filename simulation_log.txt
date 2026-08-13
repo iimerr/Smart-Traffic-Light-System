@@ -1,0 +1,62 @@
+=== tb_sensor_unit ===
+VCD info: dumpfile tb_sensor_unit.vcd opened for output.
+[PASS] 20 after reset : density=0
+[PASS] 80 after 3 pulses : density=3
+[PASS] 100 pulse ignored while sample_en=0 : density=3
+[PASS] 500 saturated at max : density=15
+[PASS] 520 after clear_density : density=0
+*** tb_sensor_unit: ALL TESTS PASSED ***
+
+=== tb_timer_unit ===
+VCD info: dumpfile tb_timer_unit.vcd opened for output.
+[PASS] 30 just loaded, not done yet : done=0
+[PASS] 40 count=3 : done=0
+[PASS] 50 count=2 : done=0
+[PASS] 60 count=1->0 transition pending : done=0
+[PASS] 70 count reached 0, done pulses : done=1
+[PASS] 80 done deasserts next cycle : done=0
+[PASS] 100 short reload of 1 -> done next cycle : done=1
+*** tb_timer_unit: ALL TESTS PASSED ***
+
+=== tb_emergency_unit ===
+VCD info: dumpfile tb_emergency_unit.vcd opened for output.
+[PASS] 30 idle after reset : active=0 serve_ns=0
+[PASS] 60 NS request -> NS served : active=1 serve_ns=1
+[PASS] 80 NS emergency finished -> idle : active=0 serve_ns=1
+[PASS] 110 EW request -> EW served : active=1 serve_ns=0
+[PASS] 130 EW emergency finished -> idle : active=0 serve_ns=0
+[PASS] 160 simultaneous NS+EW -> NS wins tie-break (fair alternation) : active=1 serve_ns=1
+[PASS] 160 EW request correctly queued (ew_pending=1) while NS served
+[PASS] 180 queued EW request now served immediately after NS finished : active=1 serve_ns=0
+[PASS] 200 both emergencies handled -> back to idle : active=0 serve_ns=0
+*** tb_emergency_unit: ALL TESTS PASSED ***
+
+=== tb_traffic_fsm ===
+VCD info: dumpfile tb_traffic_fsm.vcd opened for output.
+[INFO] 300 density=0 -> NS green length=8 cycles (this is MIN_GREEN=5 + fixed pipeline latency)
+[PASS] 670 density=7 -> NS green length=15, exactly 7 cycles longer than baseline as expected
+[PASS] 1040 density=15 -> NS green length=15, correctly capped at baseline+(MAX_GREEN-MIN_GREEN)=15
+[PASS] 1210 emergency preemption reached EMG_NS with NS green
+*** tb_traffic_fsm: ALL TESTS PASSED ***
+
+=== tb_traffic_light_top ===
+VCD info: dumpfile tb_traffic_light_top.vcd opened for output.
+[INFO] 170 injected 5 NS detector pulses -> expect a longer NS green next cycle
+[INFO] 4180 SIMULTANEOUS emergency requests asserted on NS and EW
+[INFO] 4360 -> serving NS emergency (state=EMG_NS)
+[INFO] 4370 -> serving NS emergency (state=EMG_NS)
+[INFO] 4380 -> serving NS emergency (state=EMG_NS)
+[INFO] 4390 -> serving NS emergency (state=EMG_NS)
+[INFO] 4400 -> serving NS emergency (state=EMG_NS)
+[INFO] 4410 -> serving NS emergency (state=EMG_NS)
+[INFO] 4420 -> serving NS emergency (state=EMG_NS)
+[INFO] 4430 -> serving NS emergency (state=EMG_NS)
+[INFO] 4520 -> serving EW emergency (state=EMG_EW)
+[INFO] 4530 -> serving EW emergency (state=EMG_EW)
+[INFO] 4540 -> serving EW emergency (state=EMG_EW)
+[INFO] 4550 -> serving EW emergency (state=EMG_EW)
+[INFO] 4560 -> serving EW emergency (state=EMG_EW)
+[INFO] 4570 -> serving EW emergency (state=EMG_EW)
+[INFO] 4580 -> serving EW emergency (state=EMG_EW)
+[INFO] 4590 -> serving EW emergency (state=EMG_EW)
+*** tb_traffic_light_top: NO SAFETY VIOLATIONS, simultaneous emergencies both served ***
