@@ -1,7 +1,7 @@
 # Smart Traffic Light Controller with Adaptive Timing and Emergency Vehicle Priority 🚦
 
 > EFB4133: Digital Systems Design — Mini Project Report
-> Semester: May 2026 | Submission date: 31 July 2026
+> Semester: May 2026 |
 > Universiti Teknologi PETRONAS
 
 ## Overview
@@ -130,11 +130,20 @@ Two distinct cases are handled differently:
 ```
 digital-systems-design-traffic-light/
 ├── README.md
-├── rtl/                 <- sensor_unit.v, timer_unit.v, emergency_unit.v,
-│                            traffic_fsm.v, traffic_light_top.v (to be added)
-├── tb/                   <- tb_sensor_unit.v, tb_timer_unit.v, tb_emergency_unit.v,
-│                            tb_traffic_fsm.v, tb_traffic_light_top.v (to be added)
-└── docs/                 <- FSM diagram, block diagram, waveform screenshots (to be added)
+├── rtl/
+│   ├── sensor_unit.v
+│   ├── timer_unit.v
+│   ├── emergency_unit.v
+│   ├── traffic_fsm.v
+│   └── traffic_light_top.v
+├── tb/
+│   ├── tb_sensor_unit.v
+│   ├── tb_timer_unit.v
+│   ├── tb_emergency_unit.v
+│   ├── tb_traffic_fsm.v
+│   └── tb_traffic_light_top.v
+└── docs/
+    └── simulation_log.txt
 ```
 
 ## Roles
